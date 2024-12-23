@@ -1,15 +1,11 @@
 import React, { Fragment } from "react";
 import "./App.css";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-// import $ from "jquery";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 
-import { Navigation, Pagination } from "swiper";
-import Logo from "./assests/images/Logo.png";
+// import $ from "jquery";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import "swiper/swiper-bundle.min.css";
+// import { Autoplay, EffectFade, Pagination } from "swiper";
+
 import adidasimg from "./assests/images/adidas.png";
 import lacosteimg from "./assests/images/lacoste.png";
 import levisimg from "./assests/images/levis.png";
@@ -23,32 +19,14 @@ import { FaSuperpowers } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 import { CiPhone } from "react-icons/ci";
 import { CiMail } from "react-icons/ci";
-import { FaBars } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function HomeSection() {
-  const [bgColor, setBgColor] = useState("transparent");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      if (scrollY > 50) {
-        setBgColor("#243642");
-      } else {
-        setBgColor("transparent");
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   // CAROUSEL
-  const handleSlideChange = () => {
-    console.log("Slide changed");
-  };
+  // const handleSlideChange = () => {
+  //   console.log("Slide changed");
+  // };
+  const navigate = useNavigate();
 
   const dress = [
     {
@@ -117,42 +95,13 @@ function HomeSection() {
     },
   ];
 
+  // Stepper
+
+  const handleClick = () => {
+    navigate("/Myorder");
+  };
   return (
     <Fragment>
-      {/* NAVBAR */}
-      <div
-        className="navbar"
-        style={{
-          backgroundColor: bgColor,
-          // backgroundColor: "#0e314c",
-          // width: "100%",
-          transition: "background-color 0.3s ease",
-        }}
-      >
-        <div className="nav">
-          <div>
-            <img src={Logo} alt="Logo-img" className="logo" />
-          </div>
-
-          <div className="navbar-content">
-            <input type="checkbox" id="check" />
-            <label for="checkbtn" className="checkbtn">
-              <FaBars className="bar-icon" />
-            </label>
-            <ul>
-              <li>
-                <Link to={"/"}>Home</Link>
-                <Link to={"/"}>About</Link>
-                <Link to={"/"}>Pages</Link>
-                <Link to={"/"}>Shop</Link>
-                <Link to={"/"}>Blog</Link>
-                <Link to={"/"}>Contact</Link>
-                <div className="nav-btn">Support</div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
       {/* HOME SECTION */}
       <div id="heroSections">
         <div className="heroSection">
@@ -212,6 +161,9 @@ function HomeSection() {
                 <div className="Card-subcontent">
                   <h3>{item.heading}</h3>
                   <p>{item.price}</p>
+                  <div className="buy-Button" onClick={handleClick}>
+                    Buy
+                  </div>
                 </div>
               </div>
             ))}
@@ -263,34 +215,19 @@ function HomeSection() {
       </div>
 
       {/* TESTIMONAL */}
-      <Swiper
-        spaceBetween={50}
+      {/* <Swiper
+        spaceBetween={10}
         slidesPerView={1}
-        at
-        once
-        navigation={true}
-        pagination={{ clickable: true }}
+        loop
         autoplay={{ delay: 3000 }}
-        loop={true}
-        onSlideChange={handleSlideChange} // Log slide changes
+        effect="fade"
+        pagination={{ clickable: true }}
+        modules={[Autoplay, EffectFade, Pagination]}
       >
-        <SwiperSlide>
-          <div style={{ height: "300px", backgroundColor: "lightblue" }}>
-            <img src={lycraimg} alt="lycra-img" className="logo-slider" />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div style={{ height: "300px", backgroundColor: "lightcoral" }}>
-            Slide 2
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div style={{ height: "300px", backgroundColor: "lightgreen" }}>
-            Slide 3
-          </div>
-        </SwiperSlide>
-      </Swiper>
-
+        <SwiperSlide>Slide 1</SwiperSlide>
+        <SwiperSlide>Slide 2</SwiperSlide>
+        <SwiperSlide>Slide 3</SwiperSlide>
+      </Swiper> */}
       {/* FOOTER */}
 
       <div className="footer-section">
