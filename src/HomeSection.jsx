@@ -228,6 +228,7 @@ function HomeSection() {
         <SwiperSlide>Slide 2</SwiperSlide>
         <SwiperSlide>Slide 3</SwiperSlide>
       </Swiper> */}
+
       {/* FOOTER */}
 
       <div className="footer-section">

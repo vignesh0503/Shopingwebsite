@@ -1,6 +1,8 @@
 import React, { Fragment, useState, useRef, useEffect } from "react";
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
 import tshirt from "./assests/images/TShirt.jpg";
+import StepperSection from "./StepperSection";
+
 const MyorderSection = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isComplete, setIsComplete] = useState(false);
@@ -85,55 +87,109 @@ const MyorderSection = () => {
     });
   };
 
+  const handleBefore = () => {
+    setCurrentStep((prevStep) => {
+      if (prevStep === stepsConfig.length) {
+        setIsComplete(true);
+        return prevStep;
+      } else {
+        return prevStep - 1;
+      }
+    });
+  };
+
   const calculateProgressVarWidth = () => {
     return ((currentStep - 1) / (stepsConfig.length - 1)) * 100;
   };
+  console.log(calculateProgressVarWidth);
   const ActiveComponent = stepsConfig[currentStep - 1]?.Component;
+
   return (
     <Fragment>
-      <div className="stepper">
-        {stepsConfig.map((step, index) => (
-          <div
-            key={index}
-            ref={(el) => (stepRef.current[index] = el)}
-            className={`step ${
-              currentStep > index + 1 || isComplete ? "complete" : ""
-            } ${currentStep === index + 1 ? "active" : ""}`}
-          >
-            <div className="step-number">
-              {currentStep > index + 1 || isComplete ? (
-                <span>
-                  <IoCheckmarkDoneCircleSharp />
-                </span>
-              ) : (
-                index + 1
-              )}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "70% 23%",
+          gap: "20px",
+          paddingTop: "250px",
+        }}
+      >
+        <div className="payment-stepper">
+          <div className="stepper">
+            {stepsConfig.map((step, index) => (
+              <div
+                key={index}
+                ref={(el) => (stepRef.current[index] = el)}
+                className={`step ${
+                  currentStep > index + 1 || isComplete ? "complete" : ""
+                } ${currentStep === index + 1 ? "active" : ""}`}
+              >
+                <div className="step-number">
+                  {currentStep > index + 1 || isComplete ? (
+                    <span>
+                      <IoCheckmarkDoneCircleSharp />
+                    </span>
+                  ) : (
+                    index + 1
+                  )}
+                </div>
+                <div className="step-name">{step.name}</div>
+              </div>
+            ))}
+            <div
+              className="progress-bar"
+              style={{
+                width: `calc(100%-${
+                  margins.marginLeft + margins.marginRight
+                }px)`,
+                marginLeft: margins.marginLeft,
+                marginRight: margins.marginRight,
+              }}
+              // style={{
+              //   marginLeft: `${margins.marginLeft}px`,
+              //   marginRight: `${margins.marginRight}px`,
+              // }}
+            >
+              <div
+                className="progress"
+                style={{ width: `${calculateProgressVarWidth()}%` }}
+              ></div>
             </div>
-            <div className="step-name">{step.name}</div>
           </div>
-        ))}
-        <div
-          className="progress-bar"
-          // style={{
-          //   width: `calc(100%-${margins.marginLeft + margins.marginRight}px)`,
-          //   marginLeft: margins.marginLeft,
-          //   marginRight: margins.marginRight,
-          // }}
-          style={{
-            marginLeft: `${margins.marginLeft}px`,
-            marginRight: `${margins.marginRight}px`,
-          }}
-        >
-          <div
-            className="progress"
-            style={{ width: `${calculateProgressVarWidth()}%` }}
-          ></div>
+          <ActiveComponent />
+          <button className="checkOut-btn" onClick={handleNext}>
+            {currentStep === stepsConfig.length ? "Finish" : "Cotinue Checkout"}
+          </button>
+          <button className="checkOut-btn" onClick={handleBefore}>
+            {currentStep === stepsConfig.length ? "Go To Home Section" : "Back"}
+          </button>
+        </div>
+        <div className="cart-card">
+          <div className="orderheading">
+            <h2>Price Details</h2>
+
+            <h3 style={{ display: "flex", justifyContent: "space-between" }}>
+              Price(item) <span>$399</span>
+            </h3>
+
+            <h3 style={{ display: "flex", justifyContent: "space-between" }}>
+              Delivery Chargess <span className="deliveryfee"> $40</span>
+            </h3>
+
+            <h3 style={{ display: "flex", justifyContent: "space-between" }}>
+              Platform Fee <span>$3</span>
+            </h3>
+
+            <h1 style={{ display: "flex", justifyContent: "space-between" }}>
+              Total Payable <span> $402</span>
+            </h1>
+          </div>
         </div>
       </div>
-      <ActiveComponent />
-      <button className="checkOut-btn" onClick={handleNext}>
-        {currentStep === stepsConfig.length ? "Finish" : "Cotinue Checkout"}
-      </button>
+
+      <div>
+        <StepperSection />
+      </div>
     </Fragment>
   );
 };
