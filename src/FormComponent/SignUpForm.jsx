@@ -1,13 +1,12 @@
-import React from "react";
-import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-import { IoClose } from "react-icons/io5";
+import React, { useState } from "react";
+import "./Form.css";
+import { IoMdCloseCircle } from "react-icons/io";
+import { FaFacebook } from "react-icons/fa6";
+import { FcGoogle } from "react-icons/fc";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const SignUpForm = ({ onClose }) => {
-  const [isFormVisible, setIsFormVisible] = useState(false);
-
-  const closeForm = () => setIsFormVisible(false);
-
+  const [showPassword, setShowPassword] = useState(false);
   const [pass, setPass] = useState("");
   const [repass, setRePass] = useState("");
   const [email, setEmail] = useState("");
@@ -15,7 +14,6 @@ const SignUpForm = ({ onClose }) => {
   const [repassMessage, setRepassMessage] = useState("");
   const [emailMessage, setemailMessage] = useState("");
   const [success, setSuccess] = useState("");
-  //   const navigate = useNavigate();
 
   const HandleSubmit = () => {
     const emailpattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -37,17 +35,31 @@ const SignUpForm = ({ onClose }) => {
       setpassMessage("Enter a valid password");
       valid = false;
     } else if (!passPattern.test(pass)) {
-      setpassMessage("password must be in correct format");
+      setpassMessage("Password must be in correct format");
       valid = false;
     } else {
       setpassMessage("");
     }
 
+    if (repass.trim() === "") {
+      setRepassMessage("Re-Enter a Password");
+      valid = false;
+    } else if (repass !== pass) {
+      setRepassMessage("Passwords must match");
+      valid = false;
+    } else {
+      setRepassMessage("");
+    }
+
     if (valid) {
-      setSuccess("successfully Registered");
-      setEmail("");
-      setPass("");
-      //   navigate("LoginForm");
+      setSuccess("Successfully Registered");
+      setTimeout(() => {
+        setEmail("");
+        setPass("");
+        setRePass("");
+        setSuccess("");
+        onClose();
+      }, 1000);
     } else {
       setSuccess("");
     }
@@ -58,56 +70,111 @@ const SignUpForm = ({ onClose }) => {
     setemailMessage("");
     setSuccess("");
   };
+
   const HandlePass = (e) => {
     setPass(e.target.value);
     setpassMessage("");
     setSuccess("");
   };
+
   const HandleRePass = (e) => {
     setRePass(e.target.value);
     setRepassMessage("");
     setSuccess("");
   };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((showpass) => !showpass);
+  };
+
   return (
     <div className="form-popup">
       <div>
         <button className="closeButton" onClick={onClose}>
-          <IoClose />
+          <IoMdCloseCircle />
         </button>
-        <h1 className="form-head">User Registration</h1>
+        <h1 className="sign-form-head">User Registration</h1>
       </div>
       <input
         onChange={HandleEmail}
-        type="Email"
+        type="email"
         placeholder="Enter Your Email Address"
         value={email}
       />
-      {emailMessage && <p style={{ color: "red" }}>{emailMessage}</p>}
-      <input
-        onChange={HandlePass}
-        type="password"
-        placeholder="Enter Your Password"
-        value={pass}
-      />
-      {passMessage && <p style={{ color: "red" }}>{passMessage}</p>}
-      <input
-        onChange={HandleRePass}
-        type="password"
-        placeholder="Confirm Password"
-        value={repass}
-      />
-      {repassMessage && <p style={{ color: "red" }}>{repassMessage}</p>}
-      <div>
-        <div className="submit-btn" onClick={HandleSubmit}>
-          Signup
-        </div>
-        {isFormVisible && (
-          <div className="popup-overlay">
-            <SignUpForm onClose={closeForm} />
-          </div>
-        )}
+      {emailMessage && (
+        <p style={{ color: "red", fontSize: "12px", margin: "0px 10px" }}>
+          {emailMessage}
+        </p>
+      )}
+      <div className="password-container">
+        <input
+          className="password-field"
+          onChange={HandlePass}
+          type={showPassword ? "text" : "password"}
+          placeholder="Enter Your Password"
+          value={pass}
+        />
+        <span
+          className="toggle-password"
+          onClick={togglePasswordVisibility}
+          style={{ cursor: "pointer" }}
+        >
+          {showPassword ? <FaEyeSlash /> : <FaEye />}
+        </span>
+      </div>
+      {passMessage && (
+        <p style={{ color: "red", fontSize: "12px", margin: "0px 10px" }}>
+          {passMessage}
+        </p>
+      )}
+      <div className="password-container">
+        <input
+          className="password-field"
+          onChange={HandleRePass}
+          type={showPassword ? "text" : "password"}
+          placeholder="Confirm Password"
+          value={repass}
+        />
+        <span
+          className="toggle-password"
+          onClick={togglePasswordVisibility}
+          style={{ cursor: "pointer" }}
+        >
+          {showPassword ? <FaEyeSlash /> : <FaEye />}
+        </span>
+      </div>
+      {repassMessage && (
+        <p style={{ color: "red", fontSize: "12px", margin: "0px 10px" }}>
+          {repassMessage}
+        </p>
+      )}
+      <div className="submit-btn" onClick={HandleSubmit}>
+        Signup
       </div>
       {success && <p style={{ color: "green", fontSize: "12px" }}>{success}</p>}
+      <p className="signup">
+        Already have an account?
+        <span onClick={onClose} style={{ color: "#007bff", cursor: "pointer" }}>
+          Login
+        </span>
+      </p>
+      <div style={{ margin: "10px 0px" }}>
+        <hr />
+      </div>
+      <div className="social-login">
+        <button className="btn facebook">
+          <span>
+            <FaFacebook />
+          </span>
+          Login with Facebook
+        </button>
+        <button className="btn google">
+          <span>
+            <FcGoogle />
+          </span>
+          Login with Google
+        </button>
+      </div>
     </div>
   );
 };

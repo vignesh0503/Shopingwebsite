@@ -1,18 +1,17 @@
-import React from "react";
-import { useState, useRef } from "react";
+import React, { useState } from "react";
 import "./Form.css";
 import { useNavigate } from "react-router-dom";
-import { IoClose } from "react-icons/io5";
+import { IoMdCloseCircle } from "react-icons/io";
+import { FaFacebook } from "react-icons/fa6";
+import { FcGoogle } from "react-icons/fc";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import SignUpForm from "./SignUpForm";
+import ForgotForm from "./ForgetComponent/ForgotForm";
 
 const LoginForm = ({ onClose }) => {
-  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [currentForm, setCurrentForm] = useState("login");
 
-  const openForm = () => setIsFormVisible(true);
-  const closeForm = () => setIsFormVisible(false);
-
-  const Email = useRef(null);
-  const Password = useRef(null);
   const [pass, setPass] = useState("");
   const [email, setEmail] = useState("");
   const [passMessage, setpassMessage] = useState("");
@@ -50,7 +49,10 @@ const LoginForm = ({ onClose }) => {
       setSuccess("Form submitted successfully");
       setEmail("");
       setPass("");
-      navigate("myorder");
+      setTimeout(() => {
+        navigate("/");
+        onClose();
+      }, 1000);
     } else {
       setSuccess("");
     }
@@ -61,56 +63,104 @@ const LoginForm = ({ onClose }) => {
     setemailMessage("");
     setSuccess("");
   };
+
   const HandlePass = (e) => {
     setPass(e.target.value);
     setpassMessage("");
     setSuccess("");
   };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((showpass) => !showpass);
+  };
+
+  if (currentForm === "forgot") {
+    return <ForgotForm onClose={() => setCurrentForm("login")} />;
+  }
+
+  if (currentForm === "signup") {
+    return <SignUpForm onClose={() => setCurrentForm("login")} />;
+  }
+
   return (
     <div className="form-popup">
       <div>
         <button className="closeButton" onClick={onClose}>
-          <IoClose />
+          <IoMdCloseCircle />
         </button>
-        <h1 className="form-head">Login form</h1>
+        <h1 className="form-head">Login Form</h1>
       </div>
       <input
         onChange={HandleEmail}
-        ref={Email}
-        type="Email"
+        type="email"
         placeholder="Enter Your Email Address"
         value={email}
       />
-      {emailMessage && <p style={{ color: "red" }}>{emailMessage}</p>}
-      <input
-        onChange={HandlePass}
-        ref={Password}
-        type="password"
-        placeholder="Enter Your Password"
-        value={pass}
-      />
-      {passMessage && <p style={{ color: "red" }}>{passMessage}</p>}
-      <p className="frpassword">Forgot Password?</p>
+      {emailMessage && (
+        <p style={{ color: "red", fontSize: "12px", margin: "0px 10px" }}>
+          {emailMessage}
+        </p>
+      )}
+      <div className="password-container">
+        <input
+          className="password-field"
+          onChange={HandlePass}
+          type={showPassword ? "text" : "password"}
+          placeholder="Enter Your Password"
+          value={pass}
+        />
+        <span
+          className="toggle-password"
+          onClick={togglePasswordVisibility}
+          style={{ cursor: "pointer" }}
+        >
+          {showPassword ? <FaEyeSlash /> : <FaEye />}
+        </span>
+      </div>
+      {passMessage && (
+        <p style={{ color: "red", fontSize: "12px", margin: "0px 10px" }}>
+          {passMessage}
+        </p>
+      )}
+
+      <p className="frpassword">
+        <span
+          onClick={() => setCurrentForm("forgot")}
+          style={{ color: "#007bff", cursor: "pointer" }}
+        >
+          Forgot Password
+        </span>
+      </p>
       <div className="submit-btn" onClick={HandleSubmit}>
-        Submit
+        Login
       </div>
       {success && <p style={{ color: "green", fontSize: "12px" }}>{success}</p>}
       <p className="signup">
-        Not a Member?
+        Don't Have an account?
         <span
-          data-aos="fade-up"
-          data-aos-duration="3000"
-          onClick={openForm}
-          style={{ color: "#007bff" }}
+          onClick={() => setCurrentForm("signup")}
+          style={{ color: "#007bff", cursor: "pointer" }}
         >
           SignUp Now
         </span>
-        {isFormVisible && (
-          <div className="popup-overlay">
-            <SignUpForm onClose={closeForm} />
-          </div>
-        )}
       </p>
+      <div style={{ margin: "10px 0px" }}>
+        <hr />
+      </div>
+      <div className="social-login">
+        <button className="btn facebook">
+          <span>
+            <FaFacebook />
+          </span>
+          Login with Facebook
+        </button>
+        <button className="btn google">
+          <span>
+            <FcGoogle />
+          </span>
+          Login with Google
+        </button>
+      </div>
     </div>
   );
 };

@@ -19,6 +19,7 @@ import { FaSuperpowers } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 import { CiPhone } from "react-icons/ci";
 import { CiMail } from "react-icons/ci";
+import { FaLongArrowAltRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 function HomeSection() {
@@ -249,7 +250,10 @@ function HomeSection() {
               className="footer-input"
             />
             <div className="subbtn">
-              <button className="sub-btn">Subscribe</button>
+              <button className="sub-btn">
+                <span className="text">Subscribe</span>
+                <span className="arrow-icon">{<FaLongArrowAltRight />}</span>
+              </button>
             </div>
           </div>
           <div className="footerSubcontent">

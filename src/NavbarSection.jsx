@@ -6,7 +6,7 @@ import { FaBars } from "react-icons/fa";
 import LoginForm from "./FormComponent/LoginForm";
 import { useLocation } from "react-router-dom";
 
-const NavbarSection = () => {
+const NavbarSection = ({ onLoginClick }) => {
   const location = useLocation();
   const [bgColor, setBgColor] = useState("transparent");
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -45,6 +45,7 @@ const NavbarSection = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [location]);
+
   return (
     <>
       <div
@@ -69,7 +70,7 @@ const NavbarSection = () => {
             <ul>
               <li>
                 <Link to={"/"}>Home</Link>
-                <Link to={"/"}>About</Link>
+                <Link to={"/about"}>About</Link>
                 <Link to={"/"}>Pages</Link>
                 <Link to={"/"}>Shop</Link>
                 <Link to={"/"}>Contact</Link>
