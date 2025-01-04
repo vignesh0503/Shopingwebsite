@@ -151,7 +151,11 @@ const SignUpForm = ({ onClose }) => {
       <div className="submit-btn" onClick={HandleSubmit}>
         Signup
       </div>
-      {success && <p style={{ color: "green", fontSize: "12px" }}>{success}</p>}
+      {success && (
+        <p style={{ color: "green", fontSize: "12px", margin: "0px 10px" }}>
+          {success}
+        </p>
+      )}
       <p className="signup">
         Already have an account?
         <span onClick={onClose} style={{ color: "#007bff", cursor: "pointer" }}>

@@ -249,12 +249,12 @@ function HomeSection() {
               placeholder="Enter an Email"
               className="footer-input"
             />
-            <div className="subbtn">
-              <button className="sub-btn">
-                <span className="text">Subscribe</span>
-                <span className="arrow-icon">{<FaLongArrowAltRight />}</span>
-              </button>
+            {/* <div className="subbtn"> */}
+            <div className="sub-btn">
+              <h1 className="text">Subscribe</h1>
+              <span className="arrow-icon">{<FaLongArrowAltRight />}</span>
             </div>
+            {/* </div> */}
           </div>
           <div className="footerSubcontent">
             <h1>Need Help</h1>

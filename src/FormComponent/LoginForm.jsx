@@ -50,7 +50,7 @@ const LoginForm = ({ onClose }) => {
       setEmail("");
       setPass("");
       setTimeout(() => {
-        navigate("/");
+        navigate("/adminpanel");
         onClose();
       }, 1000);
     } else {
@@ -134,7 +134,11 @@ const LoginForm = ({ onClose }) => {
       <div className="submit-btn" onClick={HandleSubmit}>
         Login
       </div>
-      {success && <p style={{ color: "green", fontSize: "12px" }}>{success}</p>}
+      {success && (
+        <p style={{ color: "green", fontSize: "12px", margin: "0px 10px" }}>
+          {success}
+        </p>
+      )}
       <p className="signup">
         Don't Have an account?
         <span

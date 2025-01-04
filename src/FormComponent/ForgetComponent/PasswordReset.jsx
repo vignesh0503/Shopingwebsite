@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IoMdCloseCircle } from "react-icons/io";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import LoginForm from "../LoginForm";
 
 const PasswordReset = ({ onClose }) => {
@@ -9,6 +10,7 @@ const PasswordReset = ({ onClose }) => {
   const [confirmpasswordMessage, setConfirmPasswordMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoginFormVisible, setIsLoginFormVisible] = useState(false); // To show login form
+  const [showPassword, setShowPassword] = useState(false);
 
   const openLoginForm = () => setIsLoginFormVisible(true);
   const closeLoginForm = () => setIsLoginFormVisible(false);
@@ -65,6 +67,10 @@ const PasswordReset = ({ onClose }) => {
     setSuccessMessage("");
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword((showpass) => !showpass);
+  };
+
   return (
     <div className="form-popup">
       <button className="closeButton" onClick={onClose}>
@@ -74,24 +80,43 @@ const PasswordReset = ({ onClose }) => {
         <>
           <h1 className="reset-form-head">Reset Your Password</h1>
           <p className="reset-para">Please enter a new password below.</p>
-
-          <input
-            type="password"
-            value={newPassword}
-            onChange={HandlePass}
-            placeholder="Enter New Password"
-          />
+          <div className="password-container">
+            <input
+              className="password-field"
+              type={showPassword ? "text" : "password"}
+              value={newPassword}
+              onChange={HandlePass}
+              placeholder="Enter New Password"
+            />
+            <span
+              className="toggle-password"
+              onClick={togglePasswordVisibility}
+              style={{ cursor: "pointer" }}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
           {passwordMessage && (
             <p style={{ color: "red", fontSize: "12px", margin: "0px 10px" }}>
               {passwordMessage}
             </p>
           )}
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={HandleConfirmPass}
-            placeholder="Confirm New Password"
-          />
+          <div className="password-container">
+            <input
+              className="password-field"
+              type={showPassword ? "text" : "password"}
+              value={confirmPassword}
+              onChange={HandleConfirmPass}
+              placeholder="Confirm New Password"
+            />
+            <span
+              className="toggle-password"
+              onClick={togglePasswordVisibility}
+              style={{ cursor: "pointer" }}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
           {confirmpasswordMessage && (
             <p style={{ color: "red", fontSize: "12px", margin: "0px 10px" }}>
               {confirmpasswordMessage}
@@ -101,7 +126,7 @@ const PasswordReset = ({ onClose }) => {
             Reset Password
           </button>
           {successMessage && (
-            <p style={{ color: "green", fontSize: "12px", marginTop: "10px" }}>
+            <p style={{ color: "green", fontSize: "12px", margin: "0px 10px" }}>
               {successMessage}
             </p>
           )}

@@ -67,20 +67,19 @@ const ForgotOtp = ({ onClose }) => {
               </p>
             )}
 
-            <button className="submit-btn" onClick={handleSubmit}>
+            <button className="verify-btn" onClick={handleSubmit}>
               Verify OTP
             </button>
 
             {success && (
               <p
-                style={{ color: "green", fontSize: "12px", marginTop: "10px" }}
+                style={{ color: "green", fontSize: "12px", margin: "0px 10px" }}
               >
                 {success}
               </p>
             )}
           </>
         ) : (
-          // Password Reset  will  shown verify
           <div className="popup-overlay">
             <PasswordReset onClose={onClose} />
           </div>

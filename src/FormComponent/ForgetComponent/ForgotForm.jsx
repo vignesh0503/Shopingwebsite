@@ -67,7 +67,9 @@ const ForgotForm = ({ onClose }) => {
           </div>
         </div>
         {success && (
-          <p style={{ color: "green", fontSize: "12px" }}>{success}</p>
+          <p style={{ color: "green", fontSize: "12px", margin: "0px 10px" }}>
+            {success}
+          </p>
         )}
         <p className="signup" onClick={onClose} style={{ color: "#007bff" }}>
           Back to Login
