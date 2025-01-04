@@ -6,7 +6,7 @@ import { FaBars } from "react-icons/fa";
 import LoginForm from "./FormComponent/LoginForm";
 import { useLocation } from "react-router-dom";
 
-const NavbarSection = ({ onLoginClick }) => {
+const NavbarSection = () => {
   const location = useLocation();
   const [bgColor, setBgColor] = useState("transparent");
   const [isFormVisible, setIsFormVisible] = useState(false);
