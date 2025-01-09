@@ -1,11 +1,80 @@
+.topBar-top {
+  width: 100%;
+  background-color: #1e1e2d;
+  position: fixed;
+  z-index: 99;
+}
 .topBar {
   display: flex;
   justify-content: space-between;
   padding: 20px;
   background-color: #1e1e2d;
   color: #fff;
-  width: 95%;
+  /* width: 95%; */
   height: 60px;
+}
+/* p {
+  margin-bottom: 0px !important;
+} */
+.top-logoyt-icon {
+  position: relative;
+}
+.overlay {
+  position: absolute;
+  top: 70px;
+  right: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: 1s ease;
+  height: auto;
+}
+
+.overlay-content {
+  background-color: #f4f4f9;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  /* padding: 20px; */
+  border-radius: 10px;
+  width: 200px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.overlay-content h2 {
+  color: black;
+  text-align: center;
+}
+.horizontal-line {
+  height: 1px;
+  width: 70%;
+  text-align: center;
+  margin: 10px 0;
+}
+.logout-btn {
+  margin-top: 10px;
+  padding: 5px 20px;
+  background-color: lightblue;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logout-btn span {
+  margin-left: 10px;
+}
+.closebtn {
+  border: none;
+  font-size: 20px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.closebtn:hover {
+  cursor: pointer;
 }
 .search-bar {
   display: flex;
@@ -30,20 +99,15 @@
   font-size: 16px;
 }
 
-main {
-  transition: margin-left 0.3s ease-in-out;
-  background: #f4f4f9;
-}
-
 .sidebar {
-  background-color: #1e1e2d;
-  color: #fff;
-  position: fixed;
+  background-color: #1e1e2d !important;
+  color: #fff !important;
+  position: fixed !important;
   top: 0;
   left: 0;
   /* height: 100%; */
-  height: calc(100vh - 100px);
-  width: 200px;
+  height: calc(100% - 100px);
+  width: 200px !important;
   margin-top: 100px;
   box-sizing: border-box;
   overflow-y: auto;
@@ -106,63 +170,6 @@ main {
   border-radius: 50%;
 }
 
-.overlay {
-  position: absolute;
-  top: 10%;
-  right: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  transition: 1s ease;
-}
-
-.overlay-content {
-  background-color: #f4f4f9;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
-    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
-  /* padding: 20px; */
-  border-radius: 10px;
-  width: 200px;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-.overlay-content h2 {
-  color: black;
-  text-align: center;
-}
-.horizontal-line {
-  height: 1px;
-  width: 70%;
-  text-align: center;
-  margin: 10px 0;
-}
-.logout-btn {
-  margin-top: 10px;
-  padding: 5px 20px;
-  background-color: lightblue;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.logout-btn span {
-  margin-left: 10px;
-}
-.closebtn {
-  border: none;
-  font-size: 20px;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-.closebtn:hover {
-  cursor: pointer;
-}
-
 /* DashBoard Section */
 
 .DashBoard-section {
@@ -176,8 +183,11 @@ main {
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   padding: 20px;
   border-radius: 10px;
-  height: 180px;
+  height: auto;
   background-color: #fff;
+}
+.DashBoard-content canvas {
+  height: auto !important;
 }
 .stack-overflow-content {
   display: flex;
@@ -229,6 +239,7 @@ main {
 .stack-overflow-bottom-content h4 {
   color: grey;
   font-weight: 400;
+  font-size: 14px;
 }
 
 .stack-chart-icon-bg .stack-chart-icon {
@@ -320,4 +331,141 @@ main {
 }
 .session-img-card {
   padding: 20px;
+}
+
+/* CHART */
+
+.Chart-section {
+  display: grid;
+  grid-template-columns: 85%;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.BarChart-section {
+  border: 0.5px solid gray;
+  padding: 30px 20px;
+  height: auto;
+  width: 100% !important;
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+}
+canvas {
+  width: 100% !important;
+  height: 500px !important ;
+}
+
+.PieChart-section {
+  border: 0.5px solid gray;
+  padding: 30px 20px;
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.totalVisit-content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.mobile-icon-bg .mobile-chart-icon {
+  font-size: 15px !important;
+  color: #fdb528;
+}
+.mobile-icon-bg {
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff3dd;
+}
+.lap-icon-bg .lap-chart-icon {
+  font-size: 15px !important;
+  color: #26c6f9;
+}
+.lap-icon-bg {
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #dcf6fe;
+}
+.totalvisit-mobile {
+  font-size: 13px;
+  margin-left: 10px;
+}
+
+.total-visit-vs {
+  background-color: #dcf6fe;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.total-visit-vs::before {
+  content: "";
+  position: absolute;
+  background-color: rgba(38, 43, 67, 0.12);
+  height: 140px;
+  width: 2px;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.total-visit-vs h4 {
+  font-size: 15px;
+  z-index: 2;
+}
+
+.slide {
+  background-color: #e9ecef;
+  width: 100%;
+  border-radius: 20px;
+  margin: 10px;
+  border: none;
+}
+.value1 {
+  background-color: #24d8ab;
+  width: 100%;
+  height: 10px;
+  border-radius: 20px;
+  border: none;
+}
+.value2 {
+  background-color: #f6e05e;
+  width: 30%;
+  height: 10px;
+  border-radius: 20px 0 0 20px;
+  border: none;
+  z-index: 1;
+}
+
+.graphimg-card {
+  width: 100%;
+  height: 100px;
+  margin-top: 20px;
+}
+.graphimg {
+  width: 100%;
+  height: auto;
+}
+/* Carousel*/
+@media (max-width: 991.98px) {
+  .sidebar:not(.sidebar-end):not(.show) {
+    margin-top: 80px !important;
+    margin-left: 0px !important;
+  }
 }

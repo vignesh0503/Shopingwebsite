@@ -166,13 +166,13 @@ const SignUpForm = ({ onClose }) => {
         <hr />
       </div>
       <div className="social-login">
-        <button className="btn facebook">
+        <button className=" facebook">
           <span>
             <FaFacebook />
           </span>
           Login with Facebook
         </button>
-        <button className="btn google">
+        <button className=" google">
           <span>
             <FcGoogle />
           </span>

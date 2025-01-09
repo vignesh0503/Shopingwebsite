@@ -1,15 +1,13 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import SideBar from "./SideBar";
 import TopBar from "./TopBar";
-import "./DashBoard.css";
-import Dashboard from "./DashBoardComponent/DashBoard";
-import Component from "./DashBoardComponent/Component";
+import Dashboard from "./DashBoardComponent/DashComponent/DashBoard";
 import Element from "./DashBoardComponent/Element";
 import Map from "./DashBoardComponent/Map";
 import Pages from "./DashBoardComponent/Pages";
-import Chart from "./DashBoardComponent/Chart";
+import Chart from "./DashBoardComponent/ChartComponent/Chart";
 import Mail from "./DashBoardComponent/Mail";
+import ProductMangeMent from "./DashBoardComponent/ProductDataComponent/ProductMangeMent";
 
 const AdminPanel = () => {
   const [activeComponent, setActiveComponent] = useState("Dashboard");
@@ -17,8 +15,8 @@ const AdminPanel = () => {
   const render = () => {
     if (activeComponent === "Dashboard") {
       return <Dashboard />;
-    } else if (activeComponent === "Component") {
-      return <Component />;
+    } else if (activeComponent === "Product") {
+      return <ProductMangeMent />;
     } else if (activeComponent === "Element") {
       return <Element />;
     } else if (activeComponent === "Map") {
@@ -37,10 +35,14 @@ const AdminPanel = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <TopBar />
-
-      <div style={{ display: "flex" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <SideBar setActiveComponent={setActiveComponent} />
-
         <div style={{ margin: "120px 20px 20px 220px" }}>{render()}</div>
       </div>
     </div>

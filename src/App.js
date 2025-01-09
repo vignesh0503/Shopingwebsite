@@ -9,7 +9,6 @@ import NavbarSection from "./NavbarSection";
 import Homesection from "./HomeSection";
 import MyorderSection from "./MyorderSection";
 import AdminPanel from "./DashBoard/AdminPanel";
-import Component from "./DashBoard/DashBoardComponent/Component";
 
 const AppLayout = () => {
   const location = useLocation();
@@ -21,7 +20,6 @@ const AppLayout = () => {
         <Route path="/" element={<Homesection />} />
         <Route path="/myorder" element={<MyorderSection />} />
         <Route path="/adminpanel" element={<AdminPanel />} />
-        <Route path="/component" element={<Component />} />
       </Routes>
     </>
   );

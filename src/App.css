@@ -3,8 +3,7 @@
   padding: 0;
   scroll-behavior: smooth;
 }
-.app,
-.content {
+.app {
   height: 100%;
   width: 100%;
   font-family: "Source Sans Pro", sans-serif;

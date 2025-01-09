@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Shirt",
+      "price": "280",
+      "image": "https://m.media-amazon.com/images/I/81ZUL5rCfmL._AC_UY1100_.jpg"
+    },
+    {
+      "id": 2,
+      "name": "T-shirt",
+      "price": "180",
+      "image": "https://fullyfilmy.in/cdn/shop/products/New-Mockups---no-hanger---TShirt-Written-and-Directed-by-chennai.jpg?v=1662807782"
+    },
+    {
+      "id": 3,
+      "name": "Shorts",
+      "price": "300",
+      "image": "https://m.media-amazon.com/images/I/81ZUL5rCfmL._AC_UY1100_.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Pant",
+      "price": "650",
+      "image": "https://www.beyours.in/cdn/shop/files/eveeryday-pant--black--5.jpg?v=1688369505&width=1200"
+    },
+    {
+      "id": 5,
+      "name": "Lycra Pant",
+      "price": "650",
+      "image": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSBolRKY-qLs7dIU84V51kzB80gJ1FyL6uUXMlHIDHmN_Rk-_Klken0cWgfzxSreN0dWwd2zS8ZMgINtw11csHcZ-1t8CatpNiTy_3ygPs"
+    },
+    {
+      "id": 6,
+      "name": "Track Phant",
+      "price": "650",
+      "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR6LTnbb10r0Xq9sd0QKOufznsoeETN1GUWnWlvC__TyJ4KjX2o8aXJsfmI1E0Jl9FJqxAMszJkN7Pd5GY4YzHkF9ZK7h1t51iPL_g5jl8XJD0QCuvSrcLz"
+    },
+    {
+      "id": 7,
+      "name": "Lycra Plain Shirt",
+      "price": "650",
+      "image": "https://images.meesho.com/images/products/449018885/fyrr2_1200.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Lycra T-shirt",
+      "price": "650",
+      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRDkysavdGASgnL86KxjXYF677hw1Bp2YC4DdYuKMJRQD5hndH6QoQSgkiIysLOi2n_esVwmU8akx6Kknxqkpc72bMdtf8VTw"
+    }
+  ]
+}

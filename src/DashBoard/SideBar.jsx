@@ -15,7 +15,7 @@ const SideBar = ({ setActiveComponent }) => {
     setActiveComponent("Dashboard");
   };
   const HandleComponent = () => {
-    setActiveComponent("Component");
+    setActiveComponent("Product");
   };
   const HandleElement = () => {
     setActiveComponent("Element");
@@ -41,7 +41,7 @@ const SideBar = ({ setActiveComponent }) => {
       </div>
       <div className="menu-item" onClick={HandleComponent}>
         <BiSolidComponent />
-        <span>Component</span>
+        <span>Product</span>
       </div>
       <div className="menu-item" onClick={HandleElement}>
         <LiaElementor />

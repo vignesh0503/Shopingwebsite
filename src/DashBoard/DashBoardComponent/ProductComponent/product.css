@@ -1,0 +1,104 @@
+.TodoWrapper h1 {
+  color: #000000;
+  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+}
+
+.TodoWrapper {
+  background-color: #fffaec;
+  margin-top: 5rem;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+
+.TodoForm {
+  width: 100%;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-input {
+  outline: none;
+  background: none;
+  border: 1px solid #000000;
+  padding: 10px;
+  width: 300px;
+  color: #000000;
+}
+
+.todo-input::placeholder {
+  color: #5547474d;
+}
+
+.todo-btn {
+  border: 1px solid #000000;
+  color: #000000;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 20px;
+  transition: 0.3s ease;
+}
+.todo-btn:hover {
+  background-color: #8758ff;
+  color: #fff;
+  transition: 0.3s ease;
+}
+.Todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #8758ff;
+  color: #000000;
+  padding: 10px 30px;
+  border-radius: 5px;
+}
+
+.fa-trash {
+  margin-left: 0.75rem;
+}
+
+.incompleted {
+  color: #fff;
+  cursor: pointer;
+}
+
+.completed {
+  color: #c5aeff;
+  text-decoration: line-through;
+  cursor: pointer;
+}
+
+.edit-icon,
+.delete-icon {
+  cursor: pointer;
+}
+
+.filter-container {
+  margin-top: 10px;
+}
+
+.filter-select {
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.filter-todo {
+  padding: 10px 30px;
+}
+
+.select {
+  color: #fff;
+  cursor: pointer;
+  margin-left: 20px;
+  position: relative;
+  overflow: hidden;
+  appearance: none;
+  outline: none;
+}

@@ -31,14 +31,7 @@ const TopBar = () => {
     setIsOverlayVisible(false);
   };
   return (
-    <div
-      style={{
-        width: "100%",
-        backgroundColor: "#1e1e2d",
-        position: "fixed",
-        zIndex: "1",
-      }}
-    >
+    <div className="topBar-top">
       <div className="topBar">
         <div
           style={{
@@ -104,7 +97,7 @@ const TopBar = () => {
 
             <div>
               <div className="top-bar-icon" onClick={handleIconClick}>
-                <IoPersonOutline />
+                <IoPersonOutline className="top-logoyt-icon" />
               </div>
 
               {isOverlayVisible && (
